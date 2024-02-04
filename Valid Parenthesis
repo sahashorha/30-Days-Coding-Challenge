@@ -1,0 +1,27 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        // create an empty string 
+        stack<char>st;
+        //traverse the whole string 
+        for(char ch :s){
+            // check the first element is opening bracket or not 
+            // if it is opening bracket push into the stacK
+            if(ch=='('||ch=='['||ch=='{'){
+                st.push(ch);
+            }
+            // else condition is about when stack is empty or when closing bracket is encountered 
+            else{
+                // if both are equal don't  enter in if condition
+                if(st.empty()||(ch==')' && st.top()!='(')||(ch=='}' && st.top()!='{')||(ch==']' && st.top()!='[')){
+                    return false;
+                }
+                // pop the elment bcoz valid string always shows empty stack
+                st.pop();
+            }
+            
+        }
+        // if stack is empty then return true means it is a valid string otherwise return false if it is not a valid string 
+        return st.empty();
+    }
+};
