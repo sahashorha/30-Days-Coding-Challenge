@@ -1,0 +1,30 @@
+Simple loop Approach
+
+class Solution
+{
+    public:
+    //Function to reverse a linked list.
+    Node * reverselinkedlist(Node * head){
+    Node * prev = NULL;
+    Node * curr = head;
+    while(curr != NULL){
+        Node * temp = curr -> next;
+        curr -> next = prev;
+        prev = curr;
+        curr = temp;
+    }
+    head = prev;
+    return head;
+    }
+    struct Node* reverseList(struct Node *head)
+    {
+        // code here
+        // return head of reversed list
+        head = reverselinkedlist(head);
+        return head;
+    }
+    
+};
+    
+Time complexity = O(1);
+Space complexity = O(1);
