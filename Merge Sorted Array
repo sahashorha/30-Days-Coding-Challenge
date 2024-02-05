@@ -1,0 +1,48 @@
+In this question we have two approach 
+1. Using STL
+
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        // Brute force approach
+        // start the i from the orignal size of the array 
+        for(int j = 0,i=m;j<n;j++){
+            // Add the elements of nums2 in the nums1 vector 
+            nums1[i]= nums2[j];
+            // so increase the i 
+            i++;
+        }
+        // sort the vector 
+        sort(nums1.begin(),nums1.end());
+    }
+};
+
+
+Time complexity: O((m+n)log(m+n)) using sort() function
+Space complexity: O(1)
+
+
+2. Two pointer Approach
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        // intialize i = 3-1,j=3-1;for iterating array from left to right
+        int i = m-1;
+        int j = n-1;
+        // k is the third pointer which maintain adding the large number elements in nums1
+        int k = m+n-1;
+        while(j>=0){
+            if(i>=0 && nums1[i]>nums2[j]){
+                nums1[k--] = nums1[i--];
+            }
+            else{
+                nums1[k--]= nums2[j--];
+            }
+        }
+    }
+};
+
+Time complexity: O((m+n)
+Space complexity: O(1)
