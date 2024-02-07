@@ -1,0 +1,27 @@
+Using Hashtable or hashmap
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+        //1st step crate unordered map
+        unordered_map<char,int> count;
+        // loop to s string 
+        // increment the value
+        for( auto x:s){
+            count[x]++;
+        }
+        //loop to t string 
+        // decrement the value
+        for(auto x :t){
+            count[x]--;
+        }
+        //loop to the count
+        for(auto x :count){
+            if(x.second!= 0){
+                return false;
+            }
+        }
+        return true;
+    }
+};
+time Complexity = O(n)
+space Complexity = O(1)
