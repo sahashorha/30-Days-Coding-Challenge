@@ -1,0 +1,43 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        int count = 1;
+        int total = n*n;
+        vector<vector<int>>mat(n,vector<int>(n));
+        int left =0,right = n-1;
+        int top = 0,bottom = n-1;
+        int k =1;
+        while(count<=total){
+            //right
+            for(int i = left;i<=right;i++){
+                mat[top][i] = count;
+                count++;
+            }
+            top++;
+
+            //top to bottom
+            for(int i= top;i<=bottom;i++){
+                mat[i][right] = count;
+                count++;
+            }
+            right--;
+            //right to left
+            if(top<=bottom){
+                for(int i= right;i>=left;i--){
+                    mat[bottom][i] = count;
+                    count++;
+                }
+            }
+            bottom--;
+            //bottom to up
+            if(left <= right){
+                for(int i= bottom ;i>=top;i--){
+                    mat[i][left] = count;
+                    count++;
+                }
+            }
+            left++;
+        }
+        return mat;
+    }
+};
