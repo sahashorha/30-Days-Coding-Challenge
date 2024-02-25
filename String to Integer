@@ -1,0 +1,40 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+        //if string length is 0
+        if(s.length()==0) return 0;
+        int i =0;
+        //ignore the whitespaces
+        while(i<s.size() && s[i] ==' '){
+            i++;
+        }
+        //let take substring from positions of i
+        s= s.substr(i);
+        //take sign conditions
+        int sign =+1;
+        long ans =0;
+        if(s[0]=='-')sign = -1;
+        //declare bounds 
+        int MAX = INT_MAX;
+        int MIN = INT_MIN;
+        //if the first letter is symbol then itrate from index 1 otherwise
+        // itrate from 0
+        if(s[0]=='-' || s[0] == '+'){
+            i =1;
+        }
+        else i=0;
+        //traverse all the digit 
+        while(i<s.length()){
+            //if white space encountered than break the loop
+            if(s[0]==' '||!isdigit(s[i])) break;
+            // find the ans with multiplicaiton of 20
+             if(s[i]>='0' && s[i]<='9') ans = ans*10 + (s[i]-'0');
+            //check the number is in the range
+            if(sign == -1 && -1*ans<MIN) return MIN;
+            if(sign == 1 && 1*ans>MAX) return MAX;
+            i++;
+        }
+        return (int)(sign*ans);
+
+    }
+};
