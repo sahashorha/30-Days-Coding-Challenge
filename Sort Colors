@@ -1,0 +1,22 @@
+class Solution {
+public:
+ void swap(vector<int>&nums,int p1,int p2){
+     int temp = nums[p1];
+     nums[p1] = nums[p2];
+     nums[p2] = temp;
+
+
+ }
+    void sortColors(vector<int>& nums) {
+        int l=0,i=0,e = nums.size()-1;
+        while(l<=e){
+            if(nums[l] ==0){
+                swap(nums,i++,l++);
+            }
+            else if(nums[l] ==2){
+                swap(nums,l,e--);
+            }
+            else l++;
+        }
+    }
+};
